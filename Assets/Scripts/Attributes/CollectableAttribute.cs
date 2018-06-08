@@ -1,18 +1,17 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 [AddComponentMenu("Playground/Attributes/Collectable")]
 [RequireComponent(typeof(Collider2D))]
 public class CollectableAttribute : MonoBehaviour
 {
-	private UIScript userInterface;
+	private UIScript _userInterface;
 
 
 	// Start is called at the beginning
 	private void Start()
 	{
 		// Find the UI in the scene and store a reference for later use
-		userInterface = GameObject.FindObjectOfType<UIScript>();
+		_userInterface = GameObject.FindObjectOfType<UIScript>();
 	}
 
 
@@ -25,11 +24,11 @@ public class CollectableAttribute : MonoBehaviour
 		// is the other object a player?
 		if(playerTag == "Player" || playerTag == "Player2")
 		{
-			if(userInterface != null)
+			if(_userInterface != null)
 			{
 				// add one point
 				int playerId = (playerTag == "Player") ? 0 : 1;
-				userInterface.AddOnePoint(playerId);
+				_userInterface.AddOnePoint(playerId);
 			}
 
 			// then destroy this object
